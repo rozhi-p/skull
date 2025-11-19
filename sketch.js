@@ -51,6 +51,8 @@ LIBRARIES REQUIRED:
 // ==============================================
 
 // Sprite and Animations
+let agitated;
+
 let character;               // The animated sprite object
 let idleAni;                 // Idle animation (breathing, stationary)
 let walkAni;                 // Walk forward animation (toward viewer)
@@ -110,6 +112,8 @@ let noseSmoothing = 0.12;
 // PRELOAD - Load animations before setup
 // ==============================================
 function preload() {
+  agitated = createImg('agitated.gif'); // include full file name with .gif extension
+  agitated.hide();
   // Load idle animation sequence (9 frames)
   idleAni = loadAni('animations/idle/idleAnim_1.png', 15);
   
@@ -128,8 +132,14 @@ function setup() {
   // showDebug();
   
   // Create portrait canvas matching phone proportions (9:16 aspect ratio)
-  createCanvas(405, 720);
-  
+
+
+  createCanvas(windowWidth, windowHeight);
+  // Show the GIF as an actual element on the page:
+ agitated.position(0, 0);
+ agitated.size(windowWidth, windowHeight);
+  agitated.style('z-index', '-1'); // Send behind the canvas if needed
+
   // Set bottom boundary (character's closest position)
   maxY = height - 150;
   
