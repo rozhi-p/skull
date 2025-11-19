@@ -183,7 +183,7 @@ function setup() {
     });
   });
 
-  // Initialize smiley sprites
+
 
 }
 
@@ -259,14 +259,7 @@ function draw() {
     pop();
   }
 
-  // Check smiley collisions with character
-  for (let i = smileys.length - 1; i >= 0; i--) {
-    if (smileys[i].overlaps(character)) {
-      smileys[i].remove();
-      smileys.splice(i, 1);
-    }
-  }
-  
+
   // Step 7: Draw perspective lines and visual elements
   drawPerspective();
   
